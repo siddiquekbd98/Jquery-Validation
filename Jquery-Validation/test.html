@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/main.js"></script>
+
+    <style>
+        form label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            display: block;
+            margin-left: 160px;
+            font-size: small;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="first_form" method="post" action="">
+        <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" />
+        </div>
+        <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+        <input type="Reset" name="Reset" value="Reset">
+    </form>
+</body>
+</html>
+<script type="text/javascript">$(document).ready(function () {
+
+        $('#first_form').submit(function (e) {
+            reset();
+            e.preventDefault();
+            var first_name = $('#first_name').val();
+            var last_name = $('#last_name').val();
+            var email = $('#email').val();
+              $(".error").remove();
+
+            if (first_name.length < 4) {
+                $('#first_name').after('<span class="error">This field is required</span>');
+            }
+
+            if (last_name.length < 1) {
+                $('#last_name').after('<span class="error">This field is required</span>');
+            }
+            if (email.length < 1) {
+                $('#email').after('<span class="error">This field is required</span>');
+            }
+        });
+    });
+    function reset() {
+        $(".error").remove();
+        $("#errorGender").text('');
+        $("#errorCourse").text('');
+    }</script>
